@@ -2,12 +2,14 @@
 
 ## to-do list
 - [x] Create a github page
-- [ ] Push my commits
+- [x] Push my commits
 - [ ] Finish video lighting histogram
 - [ ] Check the SHRP2 data with our current data
 - [ ] Check with Xiang about this dataset
 - [ ] Restore the csv file in repository
 
+## Weekly meeting
+Meeting on every Tuesday at 4:45-5:45 pm.
 
 ## Problem definition: 
 For edititng the paper check this [link](https://www.overleaf.com/7815968227xqkmcmwpzmzv)
