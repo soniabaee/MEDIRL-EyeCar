@@ -3,10 +3,14 @@
 ## to-do list
 - [x] Create a github page
 - [x] Push my commits
-- [ ] Finish video lighting histogram
+- [x] Finish video lighting histogram
 - [ ] Check the SHRP2 data with our current data
-- [ ] Check with Xiang about this dataset
 - [ ] Restore the csv file in repository
+
+## Idea
+- matching realtime video with eye tracking data _(portable eye tracker)_ to see when the participant attention is off-road.
+
+
 
 ## Weekly meeting
 Meeting on every Tuesday at 4:45-5:45 pm.
