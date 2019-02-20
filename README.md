@@ -10,8 +10,13 @@
 
 ## Idea
 - matching realtime video with eye tracking data _(portable eye tracker)_ to see when the participant attention is off-road.
-
-
+### Title
+- Automatic Hazard Recognition by Physiological Data (forward collision)
+### Hyptothesis
+- 
+## Variables
+    - independent variables: Enivronment, Age, Weather, Density (number of cars in the road), gender, Day time (night, day), Driving experience
+    - dependent variables: Eye tracker (Gaze, pupil size, distance, fixation, fttp), HR (HRV, NN50, RMSD), EEG (VEP), car's speed
 
 ## Weekly meeting
 Meeting on every Tuesday at 4:45-5:45 pm.
