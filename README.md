@@ -1,5 +1,6 @@
 # eyeCar
 ## to-do
+**paper related to reinforcement learning in driving**
 1. How to define the score for each individual 
     1. one approach: based on the importance of each feature we can define the score by weightening of them
 2. The dynamic score should have the determined defintion:
