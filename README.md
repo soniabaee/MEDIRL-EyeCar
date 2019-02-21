@@ -1,28 +1,31 @@
 # eyeCar
-
-## to-do list
-- [ ] **Driving Framework**
-- [x] Create a github page
-- [x] Push my commits
-- [x] Finish video lighting histogram
-- [ ] Check the SHRP2 data with our current data
-- [ ] Restore the csv file in repository
-
+## to-do
+1. How to define the score for each individual 
+    1. one approach: based on the importance of each feature we can define the score by weightening of them
+2. The dynamic score should have the determined defintion:
+    1. challenge is that what does the gaze, fixation, fixation duration mean should we consider in whole video or during the accident we should check or we should have different levels for that as porpotional. For example, the gaze value during whole video and gaze value during the (+/-6) of the accident. 
+3. different sequence of video and effect of that for each individual, we should have position of video on that sequence for that participant.
+4. action: is a probability value as looking (+/-6s) at hazardous object or not or change the distance to the monitor (+/-6) of the accident. 
+5. Reward: how to define the reward is based on the action and state if the action value probability of detection is higher we would assing more rewards to the participant and update individual state based on the reward. 
+6. what is the pattern of each individual based on the state, action, and reward
+7. what is the most interesting videos for each individual, what is the meaning of the interest by dependent and independent value
 ## Idea
 - matching realtime video with eye tracking data _(portable eye tracker)_ to see when the participant attention is off-road.
 ### Title
 - Automatic Hazard Recognition by Physiological Data (forward collision avoidance)
 ### Hyptothesis
+
 - Participant:
     - Independent variable score (score_{I_j}): this is a constant value during watching different videos 
     - Dependent variable score (score_{D_ij}): this is a dynamic value during watching different videos, each video has their own value for eye tracker data, and heart rate for each individual participant
 
 - Video:
+    - type of accident is unique
     - we have two different sequences of video to show
         - v1, ..., v21
         - v'1, ..., v'21
 - Reinforcement learning framework
-    - state: (score_{D_ij}) + (score_{D_ij}) + video's position in sequence
+    - state: (score_{D_ij}) + (score_{D_ij}) + video's position in sequence of that group
     - action: did the participant look at the hazardous or not (0-1)
     - Reward: the time and duration of looking at hazardous shows the score of detection if the it is close to 1 they get more reward, otherwise get less reward
 
@@ -33,6 +36,16 @@
 ## Variables
     - independent variables: Enivronment, Weather, Density (number of cars in the road), gender, Day time (night, day), Driving experience
     - dependent variables: Eye tracker (Gaze, pupil size, distance, fixation, fttp), HR (HRV, NN50, RMSD), EEG (VEP), car's speed
+
+## to-do list
+- [ ] **Driving Framework**
+- [x] Create a github page
+- [x] Push my commits
+- [x] Finish video lighting histogram
+- [ ] Check the SHRP2 data with our current data
+- [ ] Restore the csv file in repository
+
+
 
 ## Weekly meeting
 Meeting on every Tuesday at 4:45-5:45 pm.
