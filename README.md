@@ -13,9 +13,25 @@
 ### Title
 - Automatic Hazard Recognition by Physiological Data (forward collision avoidance)
 ### Hyptothesis
-- check the forward collision avoidance papers and check relationship with dependent variables and what we got from our results. 
+- Participant:
+    - Independent variable score (score_{I_j}): this is a constant value during watching different videos 
+    - Dependent variable score (score_{D_ij}): this is a dynamic value during watching different videos, each video has their own value for eye tracker data, and heart rate for each individual participant
+
+- Video:
+    - we have two different sequences of video to show
+        - v1, ..., v21
+        - v'1, ..., v'21
+- Reinforcement learning framework
+    - state: (score_{D_ij}) + (score_{D_ij}) + video's position in sequence
+    - action: did the participant look at the hazardous or not (0-1)
+    - Reward: the time and duration of looking at hazardous shows the score of detection if the it is close to 1 they get more reward, otherwise get less reward
+
+- we can find the personal pattern of detection for each individual in two different sequence of videos
+- the most interesting video would be determined by state, action, reward of participant to see the amount of relationship between independent and dependent variable for each individual
+
+
 ## Variables
-    - independent variables: Enivronment, Age, Weather, Density (number of cars in the road), gender, Day time (night, day), Driving experience
+    - independent variables: Enivronment, Weather, Density (number of cars in the road), gender, Day time (night, day), Driving experience
     - dependent variables: Eye tracker (Gaze, pupil size, distance, fixation, fttp), HR (HRV, NN50, RMSD), EEG (VEP), car's speed
 
 ## Weekly meeting
