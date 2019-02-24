@@ -2,6 +2,8 @@
 ## to-do
 **paper related to reinforcement learning in driving**
 1. How to define the score for each individual 
+    https://machinelearningmastery.com/feature-selection-in-python-with-scikit-learn/
+    https://machinelearningmastery.com/feature-selection-machine-learning-python/
     1. one approach: based on the importance of each feature we can define the score by weightening of them
 2. The dynamic score should have the determined defintion:
     1. challenge is that what does the gaze, fixation, fixation duration mean should we consider in whole video or during the accident we should check or we should have different levels for that as porpotional. For example, the gaze value during whole video and gaze value during the (+/-6) of the accident. 
