@@ -1,5 +1,6 @@
 # eyeCar
 ## to-do
+- should create the appropriate dataset for the dependent variable and also hazardousFrame for each video
 **paper related to reinforcement learning in driving**
 1. How to define the score for each individual 
     https://machinelearningmastery.com/feature-selection-in-python-with-scikit-learn/
