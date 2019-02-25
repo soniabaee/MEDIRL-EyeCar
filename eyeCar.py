@@ -109,7 +109,9 @@ class eyeCar:
             this is a [0-1] value if the agent look at the hazardous (smaller framenumber) and look at 
             the hazardous in longer time we assign more reward to that participant.
         """
-        
+        #Erfan:
+        #duration of start to end is important if duration is longer the participant has more time to detect but shorter
+        #he/she has less time to detect, how shall I involve this in the reward function.?
         videos = self.videos
         action = self.action
         rewards = self.reward
