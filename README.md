@@ -1,6 +1,7 @@
 # eyeCar
 ## to-do
-- should create the appropriate dataset for the dependent variable and also hazardousFrame for each video
+- should add speed of car for each video during the recording
+- the density value of the video is not captured and should be added in the new data frame
 **paper related to reinforcement learning in driving**
 1. How to define the score for each individual 
     https://machinelearningmastery.com/feature-selection-in-python-with-scikit-learn/
