@@ -1,4 +1,7 @@
 # eyeCar
+
+## paper
+- https://www.hfes.org/blogs/lindsey-kim/2019/01/16/call-for-papers-machine-learning-artificial-intell
 ## to-do
 - should add speed of car for each video during the recording
 - the density value of the video is not captured and should be added in the new data frame
