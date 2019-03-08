@@ -6,30 +6,43 @@ Created on Sun Feb 24 17:09:56 2019
 @author: sonia
 """
 import pandas as pd
+import numpy as np
+
+from videos import videos
+from participants import participants
 
 class eyeCar:
     
-    def __init__(self, videos, participants, independentFile, dependentFile, state, action, reward):
+    def __init__(self, independentFile, dependentFile, hazardousFile):
         """
             initialize the state with the first video
         """
-        self.videos = videos
-        self.participants = participants
         self.independentFile = independentFile
         self.dependentFile = dependentFile
+        self.hazardousFile = hazardousFile
+        
+        self.videos = videos()
+        
+        self.participants = participants()
+        self.participants.initalParticipant()
+        
         self.state = None
         self.action = None
-        self.reward = 0
+        self.hazardous = None
+        self.reward = None
+        
         self.hazardousFrame = self.videos.hazardousFrame
+        self.hazardousState = {participant: 0 for participant in self.participants.allParticipants}
         self.scoreIV = {participant: 0 for participant in self.participants.allParticipants}
         self.scoreDV = {participant: 0 for participant in self.participants.allParticipants}
         self.valueState = {participant: 0 for participant in self.participants.allParticipants} 
         self.validate = {participant: 0 for participant in self.participants.allParticipants}
         self.reward = {participant: 0 for participant in self.participants.allParticipants}
+        
         self.rewardParam = 0.1
         self.alpha = 0.1
         self.gamma = 1
-        
+        self.participants.allParticipants
         
     def calculateIndScore(self, participant):
         """
@@ -38,14 +51,14 @@ class eyeCar:
         """
         
         independentValue = pd.read_csv(self.independentFile)
-        slcVideos = self.videos.videoGroup
+        slcVideos = self.videos.allVideos
         
-        iValues = independentValue.loc[(independentValue['ID'] == participant) & (independentValue['Video'] in slcVideos)]
+        iValues = independentValue.loc[(independentValue['ID'] == participant)]# & (independentValue['Video'] in slcVideos).any()]
         
+        indValue = {}
         indValue = {video:{'age': iValues[iValues['Video'] == video]['Age'][0], 
                         'gender': iValues[iValues['Video'] == video]['Gender'][0], 
                         'weather': iValues[iValues['Video'] == video]['Weather'][0], 
-                        'environment': iValues[iValues['Video'] == video]['Environment'][0],
                         'day': iValues[iValues['Video'] == video]['Time'][0],
                         'driving experience': iValues[iValues['Video'] == video]['Driving Experience'][0],
                         'posInRow': iValues[iValues['Video'] == video]['posInRow'][0]} for video in slcVideos}                      
@@ -57,17 +70,19 @@ class eyeCar:
             gaze + pupil size + distance + fixation + fttp + car's speed
         """
         dependentValue = pd.read_csv(self.dependentFile)
-        slcVideos = self.videos.videoGroup
-        dValues = dependentValue.loc[(dependentValue['ID'] == participant) & (dependentValue['Video'] in slcVideos)]
-        
-        depValue = {video: {'frame': dValues[dValues['Video'] == video]['frame'], 
-                        'gazeX': dValues.loc[(dValues['frame'] == dValues[dValues['Video'] == video]['frame']) & (dValues['Video'] == video)]['gazeX'], 
-                        'gazeY': dValues.loc[(dValues['frame'] == dValues[dValues['Video'] == video]['frame']) & (dValues['Video'] == video)]['gazeY'], 
-                        'pupilSize': dValues.loc[(dValues['frame'] == dValues[dValues['Video'] == video]['frame']) & (dValues['Video'] == video)]['pupilSize'], 
-                        'distance': dValues.loc[(dValues['frame'] == dValues[dValues['Video'] == video]['frame']) & (dValues['Video'] == video)]['distance'], 
-                        'fixation': dValues.loc[(dValues['frame'] == dValues[dValues['Video'] == video]['frame']) & (dValues['Video'] == video)]['fixation'], 
-                        'fttp': dValues.loc[(dValues['frame'] == dValues[dValues['Video'] == video]['frame']) & (dValues['Video'] == video)]['fttp'], 
-                        'speed': dValues.loc[(dValues['frame'] == dValues[dValues['Video'] == video]['frame']) & (dValues['Video'] == video)]['speed']} for video in slcVideos}     
+        slcVideos = self.videos.allVideos
+        dValues = dependentValue.loc[(dependentValue['participant'] == participant) & (dependentValue['stimulusName'] in slcVideos)]
+      
+        depValue = {video: {'frame': dValues[dValues['stimulusName'] == video]['stimulusName'], 
+                        'gazeX': dValues.loc[(dValues['frame'] == dValues[dValues['stimulusName'] == video]['frame']) & (dValues['stimulusName'] == video)]['GazeX'], 
+                        'gazeY': dValues.loc[(dValues['frame'] == dValues[dValues['Video'] == video]['frame']) & (dValues['stimulusName'] == video)]['GazeY'], 
+                        'pupilLeft': dValues.loc[(dValues['frame'] == dValues[dValues['stimulusName'] == video]['frame']) & (dValues['stimulusName'] == video)]['pupilLeft'], 
+                        'pupilRight': dValues.loc[(dValues['frame'] == dValues[dValues['stimulusName'] == video]['frame']) & (dValues['stimulusName'] == video)]['pupilRight'],
+                        'DistanceLeft': dValues.loc[(dValues['frame'] == dValues[dValues['stimulusName'] == video]['frame']) & (dValues['stimulusName'] == video)]['DistanceLeft'], 
+                        'DistanceRight': dValues.loc[(dValues['frame'] == dValues[dValues['stimulusName'] == video]['frame']) & (dValues['stimulusName'] == video)]['DistanceRight'], 
+                        'FixationSeq': dValues.loc[(dValues['frame'] == dValues[dValues['stimulusName'] == video]['frame']) & (dValues['stimulusName'] == video)]['FixationSeq'], 
+                        'FixationDuration': dValues.loc[(dValues['frame'] == dValues[dValues['stimulusName'] == video]['frame']) & (dValues['stimulusName'] == video)]['FixationDuration'], 
+                        'study': dValues.loc[(dValues['frame'] == dValues[dValues['stimulusName'] == video]['frame']) & (dValues['stimulusName'] == video)]['study']} for video in slcVideos}     
         
         
         return depValue;
@@ -76,11 +91,20 @@ class eyeCar:
         """
             calculate the value of state by scoreIV, scoreDV + which video + place of video on row + group
         """        
+        particpants = self.participants.allParticipants
+        
         self.scoreIV = { participant:self.calculateIndScore(participant) for participant in particpants}
         self.scoreDV = { participant:self.calculateDepScore(participant) for participant in particpants}
         
+        
         self.valueState = { participant:{'scoreIV': self.scoreIV.participant, 'scoreDV': self.scoreDV.participant} for participant in particpants}
     
+    def calcualteState(self):
+        """
+            initial the value of state for each participant
+        """ 
+        state = self.calculateStateValue()
+        self.state = state
     
     def caclulateAction(self,participant):
         """
@@ -88,11 +112,11 @@ class eyeCar:
             it should retun the frame number + duration of hit on that frame
         """
         dependentValue = pd.read_csv(self.dependentFile)
-        slcVideos = self.videos.videoGroup
-        vAction = dependentValue.loc[(dependentValue['ID'] == participant) & (dependentValue['Video'] in slcVideos)]
+        slcVideos = self.videos.allVideos
+        vAction = dependentValue.loc[(dependentValue['participant'] == participant) & (dependentValue['stimulusName'] in slcVideos)]
         
-        actionValue = {video: {'duration': vAction.loc[(vAction['frame'] == vAction[vAction['Video'] == video]['frame']) & (vAction['Video'] == video)]['duration'], 
-                        'fttp': vAction.loc[(vAction['frame'] == vAction[vAction['Video'] == video]['frame']) & (vAction['Video'] == video)]['fttp']} for video in slcVideos}     
+        actionValue = {video: {'FixationDuration': vAction.loc[(vAction['frame'] == vAction[vAction['stimulusName'] == video]['frame']) & (vAction['stimulusName'] == video)]['FixationDuration'], 
+                        'fttp': vAction.loc[(vAction['frame'] == vAction[vAction['stimulusName'] == video]['frame']) & (vAction['stimulusName'] == video)]['fttp']} for video in slcVideos}     
         
         return actionValue;
     
@@ -103,6 +127,23 @@ class eyeCar:
         particpants = self.participants.allParticipants    
         self.action = { participant:self.caclulateAction(participant) for participant in particpants}
         
+    
+    def loadHazardous(self, participant):
+        """
+            this shows the value of participant duration of hazardous situation
+        """
+        hazardousFile = pd.read_csv(self.hazardousFile)
+        slcVideos = self.videos.allVideos
+        vHazardous = hazardousFile.loc[(hazardousFile['participant'] == participant) & (hazardousFile['stimulusName'] in slcVideos)]
+       
+        hazardousValue = {video: {'aoiDuration': vHazardous.loc[vHazardous['stimulusName'] == video]['aoiDuration'], 
+                        'ttff': vHazardous.loc[vHazardous['stimulusName'] == video]['ttff'],
+                        'timeSpent': vHazardous.loc[vHazardous['stimulusName'] == video]['timeSpent'],
+                        'fixationCount': vHazardous.loc[vHazardous['stimulusName'] == video]['fixationCount'],
+                        'hitTime': vHazardous.loc[vHazardous['stimulusName'] == video]['hitTime'],
+                        'avgFixDuration': vHazardous.loc[vHazardous['stimulusName'] == video]['avgFixDuration'] } for video in slcVideos}     
+        
+        return hazardousValue;
     
     def rewardValue(self):
         """
@@ -116,13 +157,16 @@ class eyeCar:
         action = self.action
         rewards = self.reward
         validate = self.validate
-        hazardousFrame = videos.hazardousFrame
+        hazardousFrame = self.videos.hazardousFrame
+        particpants = self.participants.allParticipants    
+        self.hazardous = { participant:self.loadHazardous(participant) for participant in particpants}
+        hazardous = self.hazardous
         for participant in action.keys:
             for video in action[participant].keys:
-                diffStart = action[prticipant][video]['fttp'] - hazardousFrame[video]['start']
-                if action[prticipant][video]['fttp'] > hazardousFrame[video]['start'] & action[prticipant][video]['fttp'] > hazardousFrame[video]['end']:
+                timeLatency = np.divide(hazardous[participant]['hitTime'], hazardous[participant]['aoiDuration'])
+                if hazardous[participant]['timeSpent'] != 0:
                     validate[participant] = {video: 1}
-                    rewards[participant] = {videos: (1/diffStart)}
+                    rewards[participant] = {videos: np.divide(1,timeLatency)}
                 else: 
                     validate[participant] = {video: 0}
                     rewards[participant] = {videos: -1}
@@ -134,9 +178,24 @@ class eyeCar:
         
         
     
-    def pattern():
+    def pattern(self):
         """
             save the user's pattern based on each frame in each video
+            Should consider two types of pattern 
+                1. frame by frame for each user (it is just the sequence of value for the dependent values and the independent values are constant for each video)
+                2. vide by video in each group
+                3. group by group
         """
+        state = self.state
+        action = self.action
+        reward = self.reward
+        
+        participants = self.participants.allParticipants
+        
+        fPattern = "test"
+        
+        
+        
+        
         
         return uPattern;
