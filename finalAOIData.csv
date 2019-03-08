@@ -1,0 +1,127 @@
+"","studyName","stimulusName","participant","aoiDuration","hitTime","timeSpent","ttff","fixationCount","avgFixDuration"
+"1","Study_2_Group_2","Day_Rain_High_1","Dr. Kim",5789,22123,2843,22132,12,255
+"2","Study_2_Group_2","Day_Rain_High_1","Janie",5789,20589,2423,20424,48,51
+"3","Study_2_Group_2","Day_Rain_High_1","Victor",5789,20328,4908,20956,6,851
+"4","Study_2_Group_2","Day_Rain_High_1","Daniel",5789,22899,1508,21964,14,89
+"5","Study_2_Group_2","Day_Rain_High_2","Dr. Kim",3584,20318,1240,20331,6,222
+"6","Study_2_Group_2","Day_Rain_High_2","Janie",3584,20731,428,20426,13,55
+"7","Study_2_Group_2","Day_Rain_High_2","Victor",3584,21123,2359,3584,0,-1
+"8","Study_2_Group_2","Day_Rain_High_2","Daniel",3584,0,0,3584,0,-1
+"9","Study_2_Group_2","Day_Rain_Town_1","Dr. Kim",4510,21774,2553,21778,14,199
+"10","Study_2_Group_2","Day_Rain_Town_1","Janie",4510,19960,1694,19963,34,61
+"11","Study_2_Group_2","Day_Rain_Town_1","Victor",4510,19960,3891,20534,18,189
+"12","Study_2_Group_2","Day_Rain_Town_1","Daniel",4510,20010,2466,20020,33,67
+"13","Study_2_Group_2","Day_Sunny_High_1","Dr. Kim",4147,20528,2929,20537,6,607
+"14","Study_2_Group_2","Day_Sunny_High_1","Janie",4147,19821,1657,19834,37,45
+"15","Study_2_Group_2","Day_Sunny_High_1","Victor",4147,20847,2802,20862,15,234
+"16","Study_2_Group_2","Day_Sunny_High_1","Daniel",4147,21997,1245,21794,30,18
+"17","Study_2_Group_2","Day_Sunny_Town_1","Dr. Kim",5153,20431,2303,20428,22,111
+"18","Study_2_Group_2","Day_Sunny_Town_1","Janie",5153,20858,2140,20870,39,57
+"19","Study_2_Group_2","Day_Sunny_Town_1","Victor",5153,20174,4844,20168,3,1712
+"20","Study_2_Group_2","Day_Sunny_Town_1","Daniel",5153,0,0,5153,0,-1
+"21","Study_2_Group_2","Night_Rain_High_2","Dr. Kim",3806,22258,903,22274,11,69
+"22","Study_2_Group_2","Night_Rain_High_2","Janie",3806,20757,1528,20318,23,66
+"23","Study_2_Group_2","Night_Rain_High_2","Victor",3806,20259,3335,20830,2,1624
+"24","Study_2_Group_2","Night_Rain_High_2","Daniel",3806,21616,795,21625,15,29
+"25","Study_2_Group_2","Night_Rain_High_3","Dr. Kim",17628,4663,10729,5218,46,224
+"26","Study_2_Group_2","Night_Rain_High_3","Janie",17628,5152,2009,5155,41,49
+"27","Study_2_Group_2","Night_Rain_High_3","Victor",17628,4749,9029,4770,33,304
+"28","Study_2_Group_2","Night_Rain_High_3","Daniel",17628,5087,6885,5108,122,48
+"29","Study_2_Group_2","Night_Rain_High_4","Dr. Kim",3231,20558,1254,20538,9,159
+"30","Study_2_Group_2","Night_Rain_High_4","Janie",3231,21269,1426,21450,43,24
+"31","Study_2_Group_2","Night_Rain_High_4","Victor",3231,20681,2096,20694,3,539
+"32","Study_2_Group_2","Night_Rain_High_4","Daniel",3231,20559,1950,21632,58,16
+"33","Study_2_Group_2","Night_Rain_Town_3","Dr. Kim",1905,19847,1522,19859,35,33
+"34","Study_2_Group_2","Night_Rain_Town_3","Janie",1905,19773,1257,19786,9,152
+"35","Study_2_Group_2","Night_Rain_Town_3","Victor",1905,19605,1535,1905,0,-1
+"36","Study_2_Group_2","Night_Rain_Town_3","Daniel",1905,0,0,1905,0,-1
+"37","Study_2_Group_2","Night_Sunny_High_2","Dr. Kim",4602,19836,3838,20373,8,396
+"38","Study_2_Group_2","Night_Sunny_High_2","Janie",4602,19837,2459,20000,41,54
+"39","Study_2_Group_2","Night_Sunny_High_2","Victor",4602,19916,4096,19928,3,1644
+"40","Study_2_Group_2","Night_Sunny_High_2","Daniel",4602,20461,2745,20010,56,39
+"41","Study_2_Group_1","Day_Rain_High_2","Dr. Kim",3273,0,0,3273,0,-1
+"42","Study_2_Group_1","Day_Rain_High_2","janie",3273,20949,560,21274,8,102
+"43","Study_2_Group_1","Day_Rain_High_2","Victor",3273,20670,2285,3273,0,-1
+"44","Study_2_Group_1","Day_Rain_High_2","Daniel",3273,20867,1320,20863,22,49
+"45","Study_2_Group_1","Day_Rain_Town_2","Dr. Kim",4780,23285,2146,23289,8,289
+"46","Study_2_Group_1","Day_Rain_Town_2","janie",4780,21142,1165,21138,22,55
+"47","Study_2_Group_1","Day_Rain_Town_2","Victor",4780,20891,4459,21235,4,1328
+"48","Study_2_Group_1","Day_Rain_Town_2","Daniel",4780,20927,2034,20966,34,55
+"49","Study_2_Group_1","Day_Rain_Town_3","Dr. Kim",10097,0,0,10097,0,-1
+"50","Study_2_Group_1","Day_Rain_Town_3","janie",10097,17289,1733,13072,32,78
+"51","Study_2_Group_1","Day_Rain_Town_3","Victor",10097,12248,7694,14785,9,765
+"52","Study_2_Group_1","Day_Rain_Town_3","Daniel",10097,0,0,10097,0,-1
+"53","Study_2_Group_1","Day_Sunny_High_2","Dr. Kim",1976,20304,1582,20502,1,1815
+"54","Study_2_Group_1","Day_Sunny_High_2","janie",1976,20683,1028,20698,11,69
+"55","Study_2_Group_1","Day_Sunny_High_2","Victor",1976,20544,1643,1976,0,-1
+"56","Study_2_Group_1","Day_Sunny_High_2","Daniel",1976,20396,724,20342,16,48
+"57","Study_2_Group_1","Day_Sunny_Town_3","Dr. Kim",3994,0,0,3994,0,-1
+"58","Study_2_Group_1","Day_Sunny_Town_3","janie",3994,0,0,3994,0,-1
+"59","Study_2_Group_1","Day_Sunny_Town_3","Victor",3994,18074,1853,18088,29,85
+"60","Study_2_Group_1","Day_Sunny_Town_3","Daniel",3994,18536,1294,18564,36,26
+"61","Study_2_Group_1","Night_Rain_High_1","Dr. Kim",3964,19034,1833,19064,3,960
+"62","Study_2_Group_1","Night_Rain_High_1","janie",3964,19047,2212,19607,24,88
+"63","Study_2_Group_1","Night_Rain_High_1","Victor",3964,19186,2399,19199,4,696
+"64","Study_2_Group_1","Night_Rain_High_1","Daniel",3964,19039,1719,19436,12,157
+"65","Study_2_Group_1","Night_Rain_Town_1","Dr. Kim",3758,19923,2920,20632,3,999
+"66","Study_2_Group_1","Night_Rain_Town_1","janie",3758,21912,1136,19735,29,22
+"67","Study_2_Group_1","Night_Rain_Town_1","Victor",3758,19516,3525,21144,1,3742
+"68","Study_2_Group_1","Night_Rain_Town_1","Daniel",3758,20509,2344,20515,15,140
+"69","Study_2_Group_1","Night_Rain_Town_2","Dr. Kim",3532,20767,2958,21321,9,342
+"70","Study_2_Group_1","Night_Rain_Town_2","janie",3532,21183,2204,21252,35,56
+"71","Study_2_Group_1","Night_Rain_Town_2","Victor",3532,20764,3438,24060,2,349
+"72","Study_2_Group_1","Night_Rain_Town_2","Daniel",3532,0,0,3532,0,-1
+"73","Study_2_Group_1","Night_Sunny_High_1","Dr. Kim",3045,20533,2956,20679,4,717
+"74","Study_2_Group_1","Night_Sunny_High_1","janie",3045,20531,2319,20642,56,25
+"75","Study_2_Group_1","Night_Sunny_High_1","Victor",3045,20541,3018,20543,2,2047
+"76","Study_2_Group_1","Night_Sunny_High_1","Daniel",3045,20533,2473,20745,32,79
+"77","Study_2_Group_1","Night_Sunny_Town_1","Dr. Kim",2511,20868,1343,20872,6,228
+"78","Study_2_Group_1","Night_Sunny_Town_1","janie",2511,20406,1766,20493,40,28
+"79","Study_2_Group_1","Night_Sunny_Town_1","Victor",2511,20625,1290,20639,7,294
+"80","Study_2_Group_1","Night_Sunny_Town_1","Daniel",2511,22394,409,2511,0,-1
+"81","Study_2_Group_1","Night_Sunny_Town_2","Dr. Kim",1575,0,0,1575,0,-1
+"82","Study_2_Group_1","Night_Sunny_Town_2","janie",1575,22055,1408,22076,18,70
+"83","Study_2_Group_1","Night_Sunny_Town_2","Victor",1575,22016,1406,22148,1,382
+"84","Study_2_Group_1","Night_Sunny_Town_2","Daniel",1575,0,0,1575,0,-1
+"85","Study_1_Group_2","Day_Rain_High_2","Erfan",3533,21304,1604,21982,5,179
+"86","Study_1_Group_2","Day_Rain_High_2","Luis",3533,21706,804,3533,0,-1
+"87","Study_1_Group_2","Day_Rain_High_2","Anna",3533,0,0,3533,0,-1
+"88","Study_1_Group_2","Day_Rain_Town_2","Erfan",6612,19168,2453,20895,9,183
+"89","Study_1_Group_2","Day_Rain_Town_2","Luis",6612,19173,4900,19685,2,1643
+"90","Study_1_Group_2","Day_Rain_Town_2","Anna",6612,20116,3593,21642,18,155
+"91","Study_1_Group_2","Day_Sunny_High_2","Erfan",2665,21005,1234,21001,21,57
+"92","Study_1_Group_2","Day_Sunny_High_2","Luis",2665,20551,1919,20880,2,80
+"93","Study_1_Group_2","Day_Sunny_High_2","Anna",2665,20257,2195,20426,1,1270
+"94","Study_1_Group_2","Day_Sunny_Town_4","Erfan",4172,20810,1575,20939,40,22
+"95","Study_1_Group_2","Day_Sunny_Town_4","Luis",4172,21260,1707,4172,0,-1
+"96","Study_1_Group_2","Day_Sunny_Town_4","Anna",4172,19812,1944,21681,2,143
+"97","Study_1_Group_2","Night_Rain_High_2","Erfan",3441,0,0,3441,0,-1
+"98","Study_1_Group_2","Night_Rain_High_2","Luis",3441,0,0,3441,0,-1
+"99","Study_1_Group_2","Night_Rain_High_2","Anna",3441,0,0,3441,0,-1
+"100","Study_1_Group_1","Day_Rain_High_1","Erfan",6000,21062,1280,21155,5,148
+"101","Study_1_Group_1","Day_Rain_High_1","Luis",6000,20405,3039,20733,6,301
+"102","Study_1_Group_1","Day_Rain_High_1","Anna",6000,0,0,6000,0,-1
+"103","Study_1_Group_1","Day_Rain_Town_1","Erfan",4682,22249,1911,23328,5,329
+"104","Study_1_Group_1","Day_Rain_Town_1","Luis",4682,20680,2526,20684,4,409
+"105","Study_1_Group_1","Day_Rain_Town_1","Anna",4682,20546,4036,20571,25,155
+"106","Study_1_Group_1","Day_Sunny_High_1","Erfan",5581,21997,965,21389,9,54
+"107","Study_1_Group_1","Day_Sunny_High_1","Luis",5581,18758,2669,18756,5,536
+"108","Study_1_Group_1","Day_Sunny_High_1","Anna",5581,0,0,5581,0,-1
+"109","Study_1_Group_1","Day_Sunny_Town_1","Erfan",6665,0,0,6665,0,-1
+"110","Study_1_Group_1","Day_Sunny_Town_1","Luis",6665,20678,3202,20668,3,730
+"111","Study_1_Group_1","Day_Sunny_Town_1","Anna",6665,0,0,6665,0,-1
+"112","Study_1_Group_1","Night_Rain_High_1","Erfan",10286,14315,3232,14328,31,102
+"113","Study_1_Group_1","Night_Rain_High_1","Luis",10286,14250,4682,15961,5,306
+"114","Study_1_Group_1","Night_Rain_High_1","Anna",10286,0,0,10286,0,-1
+"115","Study_1_Group_1","Night_Rain_Town_2","Erfan",4259,20876,2117,21145,14,67
+"116","Study_1_Group_1","Night_Rain_Town_2","Luis",4259,21091,1952,21094,5,646
+"117","Study_1_Group_1","Night_Rain_Town_2","Anna",4259,0,0,4259,0,-1
+"118","Study_1_Group_1","Night_Sunny_High_1","Erfan",4117,0,0,4117,0,-1
+"119","Study_1_Group_1","Night_Sunny_High_1","Luis",4117,20755,1713,20695,1,1995
+"120","Study_1_Group_1","Night_Sunny_High_1","Anna",4117,0,0,4117,0,-1
+"121","Study_1_Group_1","Night_Sunny_Town_1","Erfan",2736,20478,1731,20516,45,33
+"122","Study_1_Group_1","Night_Sunny_Town_1","Luis",2736,20586,1685,21508,9,215
+"123","Study_1_Group_1","Night_Sunny_Town_1","Anna",2736,0,0,2736,0,-1
+"124","Study_1_Group_1","Night_Sunny_Town_2","Erfan",7741,0,0,7741,0,-1
+"125","Study_1_Group_1","Night_Sunny_Town_2","Luis",7741,17287,1910,21194,4,323
+"126","Study_1_Group_1","Night_Sunny_Town_2","Anna",7741,15937,3558,16529,8,451
