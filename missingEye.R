@@ -97,6 +97,7 @@ for(file in aoifiles){
   allAOI = rbind(aoiData,allAOI)
 }
 
+write.csv(allAOI,paste(aoiDir,"AOIData.csv",sep=""))
 
 #-----------------------------------------------------------
 ## frameValue
@@ -108,27 +109,41 @@ for(file in framefiles){
   filDir = paste(frameDir,file,sep="")
   frameData = read.csv(filDir)
   frameData$study = unlist(strsplit(file,split='__', fixed=TRUE))[1]
+  frameData$participant =  unlist(strsplit(unlist(strsplit(file,split='__', fixed=TRUE))[2],split='Frame', fixed=TRUE))[1]
   allFrame = rbind(frameData, allFrame)
 }
 
-View(allFrame)
+allFrame = allFrame[rowSums(is.na(allFrame)) != 10,]
+
+
+write.csv(allFrame,paste(frameDir,"FrameData.csv",sep=""))
 
 
 
 
+#-----------------------------------------------------------
+## read frame data
+frameDir = "C:/Users/Vishesh/Desktop/Sonia/eyeCar-master/Data/InputData/"
+frameData = read.csv(paste(frameDir,"FrameData.csv",sep=""))
+frameData = frameData[rowSums(is.na(frameData)) != 10,]
+View(frameData)
 
 
 
-
-
-
-
-
-
-
-
-
-
+#-----------------------------------------------------------
+## aoi value
+aoiDir = "C:/Users/Vishesh/Desktop/Sonia/eyeCar-master/Data/InputData/"
+aoiData = read.csv(paste(aoiDir, "AOIData.csv",sep=""))
+aoiData = aoiData[,c("Study.name","Stimulus.Name" , "Respondent.Name" , "AOI.Total.Duration..ms.","Hit.time.G..ms." , "Time.spent.G..ms.", "TTFF.F..ms.", "Fixations.Count", "Average.Fixations.Duration..ms.")]
+colnames(aoiData) = c("studyName", "stimulusName", "participant", "aoiDuration", "hitTime", "timeSpent", "ttff", "fixationCount", "avgFixDuration")
+write.csv(aoiData,paste(aoiDir,"finalAOIData.csv",sep=""))
+#-----------------------------------------------------------
+## hazardous value
+hazardousDir = "C:/Users/Vishesh/Desktop/Sonia/eyeCar-master/Data/InputData/"
+hazardousData = read.csv(paste(hazardousDir, "hazardousFrame.csv",sep=""))
+hazardousData = hazardousData[rowSums(is.na(hazardousData)) != 2,]
+hazardousData$startFrame = hazardousData$startFrame*15
+hazardousData$endFrame = hazardousData$endFrame*15
 
 
 
