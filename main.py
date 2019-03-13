@@ -15,9 +15,11 @@ def main():
     
     eyecar = eyeCar(dirInd, dirDep, dirHzrd)
     
-    eyecar.calcualteState()
-    eyecar.actionValue()
-    eyecar.rewardValue()
+    ## inital the reward, action and state for each participant during the study
+#    eyecar.calcualteState()
+#    eyecar.actionValue()
+#    eyecar.rewardValue()
+    eyecar.pattern()
     
     
     

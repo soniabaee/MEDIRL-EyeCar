@@ -19,6 +19,6 @@ class participants:
         
     def initalParticipant(self):
         
-        self.allParticipants = ['Erfan', 'Anna', 'Luis', 'Inki', 'Daniel', 'Victor', 'Jaynie']
+        self.allParticipants = ['Erfan', 'Anna', 'Luis', 'Inki', 'Daniel', 'Victor', 'Janie']
         
         
