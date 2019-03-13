@@ -1,5 +1,7 @@
 # eyeCar
-
+- talk about the framework and how the model has been used in for the next upcomming video (train for first 5 videos and check in the upcoming video)
+- use the deep learning algorithm for finding the object and calculate the brake's light
+- what is state, action, reward and the policy to learn. using the discount value for the sequence of videos.
 ## paper
 - https://www.hfes.org/blogs/lindsey-kim/2019/01/16/call-for-papers-machine-learning-artificial-intell
 ## to-do
