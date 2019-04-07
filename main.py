@@ -2,7 +2,7 @@
 """
 Created on Thu Mar  7 19:14:25 2019
 
-@author: Vishesh
+@author: Sonia
 """
 
 from eyeCar import eyeCar
@@ -19,7 +19,9 @@ def main():
 #    eyecar.calcualteState()
 #    eyecar.actionValue()
 #    eyecar.rewardValue()
-    eyecar.pattern()
+#    eyecar.pattern()
+#    eyecar.distPattern()
+    eyecar.irlComponent()
     
     
     

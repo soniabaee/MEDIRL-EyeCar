@@ -263,6 +263,7 @@ class eyeCar:
         action = objMethod.load_obj("action")
         reward = objMethod.load_obj("reward")
         
+        
 #        videos = []
 #        rewards = []
 #        for participant in reward.keys():
@@ -276,14 +277,21 @@ class eyeCar:
 #            plt.plot(videos, rewards, 'bo')
 #            plt.show()
 #            data
+
         import random
+        from operator import itemgetter
         videos = self.videos.allVideos
+        self.videos.hazardousFrameFun()
+        hazardousFrame = self.videos.hazardousFrame
         data = []
+        particpants = self.participants.allParticipants 
+        dataDist = { participant:[] for participant in particpants}
         cnt = 0
         rParam = 0
         nParam = 0
         hParam = 0
         rndVar = 0
+        vCnt = 0
         for participant in reward.keys():
             dExp = state[participant]['scoreIV']['Day_Rain_High_1']['driving experience']
             cnt = cnt + 1
@@ -304,20 +312,130 @@ class eyeCar:
                 else:
                     hParam = 1
                 weight = rParam*hParam*nParam
-                 #random.randint(1,15)
+                
                 if video in nwDict:
-                    vTemp = {'x': videos.index(video) + 1, 'y': (weight*np.abs(nwDict[video]))/dExp, 's': (weight*np.round(np.abs(nwDict[video]))*10)/dExp, 'color': cnt }
-                    rndVar = np.abs(nwDict[video])*(random.randint(2,5)/2)
+                    
+                    distanceLeft =  dict((key,d[key]['DistanceLeft'].iat[0]) for d in state[participant]['scoreDV'][video] for key in d)
+                    distanceRight =  dict((key,d[key]['DistanceRight'].iat[0]) for d in state[participant]['scoreDV'][video] for key in d)
+                    
+                    stFrame = hazardousFrame[video]['startFrame'].iat[0]
+                    endFrame = hazardousFrame[video]['endFrame'].iat[0]
+                    frames = distanceLeft.keys()
+                    distance = []
+                    for frame in frames:
+                        distance.append(np.mean([distanceLeft[frame], distanceRight[frame]]))
+                        dTemp = {'x': frame , 'y': np.mean([distanceLeft[frame], distanceRight[frame]])/10, 
+                                 's': np.round(np.mean([distanceLeft[frame], distanceRight[frame]])), 
+                                 'color': videos.index(video) + 1, 
+                                 'sFrame': stFrame,
+                                 'eFrame': endFrame,
+                                 'participant': participant }
+                        dataDist[participant].append(dTemp)
+                   
+                    vTemp = {'x': videos.index(video) + 1, 'y': (weight*np.abs(nwDict[video]))/dExp, 's': (np.mean(distance)), 'color': cnt }
+                        
+                    rndVar =np.mean(distance)*(random.randint(2,3)/2)
                 else:
-                    vTemp = {'x': videos.index(video) + 1, 'y': (weight*rndVar)/dExp, 's':(weight*rndVar*10)/dExp, 'color': cnt }
+                    vTemp = {'x': videos.index(video) + 1, 'y': (weight*rndVar)/dExp, 's':(rndVar), 'color': cnt }
                 data.append(vTemp)
+        objDir = "C:/Users/Vishesh/Desktop/Sonia/eyeCar-master/Data/InputData/"
+        objMethod = ObjMethod(objDir)
+        objMethod.save_obj(dataDist, "dataDist")
         import json
         with open('data.txt', 'w') as outfile:
             json.dump(data, outfile)
-        fPattern = "test"
+        with open('datadist.txt', 'w') as outfile:
+            json.dump(dataDist, outfile)
         
         
         
+    def distPattern(self):
+        """
+            each individual has their own pattern of looking at the monitor we
+            will check that one here
+        """
+        
+        objDir = "C:/Users/Vishesh/Desktop/Sonia/eyeCar-master/Data/InputData/"
+        objMethod = ObjMethod(objDir)
+        dataDist = objMethod.load_obj("dataDist")
+                
+        videos = self.videos.allVideos
+        
+        
+        for video in videos:
+            vDist = []
+            for participant in dataDist.keys():
+                pDist = dataDist[participant]
+                vDist.append([item for item in pDist if item["color"] == videos.index(video)+1])
+            vDist =  [item for sublist in vDist for item in sublist]
+            import json
+            with open('data-'+video+'.txt', 'w') as outfile:
+                json.dump(vDist, outfile)
         
         
         
+    def irlComponent(self):
+        """
+            save the user's pattern based on each frame in each video
+            Should consider two types of pattern 
+                1. frame by frame for each user (it is just the sequence of value for the dependent values and the independent values are constant for each video)
+                2. vide by video in each group
+                3. group by group
+        """
+        
+        objDir = "C:/Users/Vishesh/Desktop/Sonia/eyeCar-master/Data/InputData/"
+        objMethod = ObjMethod(objDir)
+        state = objMethod.load_obj("state")
+        
+        reward = objMethod.load_obj("reward")
+        dependentValue = pd.read_csv(self.dependentFile)
+        particpants = self.participants.allParticipants
+        videos = self.videos.allVideos
+        
+#        irlAction = {}
+#        for p in particpants:
+#            print(p)
+#            for v in videos:
+#                print(v)
+#                vAction = dependentValue.loc[dependentValue['participant'] == p]
+#                frames = vAction[vAction['stimulusName'] == v]['frame']
+#                for f in frames:
+#                    if p in irlAction.keys():
+#                        if v in irlAction[p].keys():
+#                            if f in irlAction[p][v].keys():
+#                                irlAction[p][v][f] = 0 if  np.isnan(vAction[(vAction['stimulusName'] == v) & (vAction['frame'] == f)]['FixationDuration'].iat[0]) == True else 1
+#                            else:
+#                                irlAction[p][v][f] = 0
+#                                irlAction[p][v][f] = 0 if  np.isnan(vAction[(vAction['stimulusName'] == v) & (vAction['frame'] == f)]['FixationDuration'].iat[0]) == True else 1
+#                        else:
+#                            irlAction[p][v] = {}
+#                            irlAction[p][v] = {f:0}
+#                    else:
+#                        irlAction[p] = {}
+#                        irlAction[p] = {v:{}}
+#                        irlAction[p][v] = {f: 0}
+#                        irlAction[p][v][f] = 0 if  np.isnan(vAction[(vAction['stimulusName'] == v) & (vAction['frame'] == f)]['FixationDuration'].iat[0]) == True else 1
+#                                
+#                    
+#        
+#        
+#        objMethod.save_obj(irlAction, "irlAction")
+        
+        irlAction = objMethod.load_obj("irlAction")
+       
+        
+        self.videos.hazardousFrameFun()
+        hazardousFrame = self.videos.hazardousFrame 
+        
+        for p in particpants:
+            for v in videos:
+                if v in  state[p]['scoreDV'].keys():
+                    
+                    
+                    fixationDuration =  dict((key,d[key]['FixationDuration'].iat[0]) for d in state[p]['scoreDV'][v] for key in d)
+                    gazeX =  dict((key,d[key]['gazeX'].iat[0]) for d in state[p]['scoreDV'][v] for key in d)
+                    gazeY =  dict((key,d[key]['gazeY'].iat[0]) for d in state[p]['scoreDV'][v] for key in d)
+                    study =  dict((key,d[key]['study'].iat[0]) for d in state[p]['scoreDV'][v] for key in d)
+                    print(study)
+                    distance =  dict((key,d[key]['DistanceRight'].iat[0]) for d in state[p]['scoreDV'][v] for key in d)
+                    pupil =  dict((key,np.mean(d[key]['pupilRight'].iat[0], d[key]['pupilLeft'].iat[0])) for d in state[p]['scoreDV'][v] for key in d)
