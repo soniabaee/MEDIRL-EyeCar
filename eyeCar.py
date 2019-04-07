@@ -383,7 +383,7 @@ class eyeCar:
                 3. group by group
         """
         
-        objDir = "C:/Users/Vishesh/Desktop/Sonia/eyeCar-master/Data/InputData/"
+        objDir = "/Users/soniabaee/Documents/Projects/EyeCar/Code/eyeCar/"
         objMethod = ObjMethod(objDir)
         state = objMethod.load_obj("state")
         
@@ -391,51 +391,39 @@ class eyeCar:
         dependentValue = pd.read_csv(self.dependentFile)
         particpants = self.participants.allParticipants
         videos = self.videos.allVideos
-        
-#        irlAction = {}
-#        for p in particpants:
-#            print(p)
-#            for v in videos:
-#                print(v)
-#                vAction = dependentValue.loc[dependentValue['participant'] == p]
-#                frames = vAction[vAction['stimulusName'] == v]['frame']
-#                for f in frames:
-#                    if p in irlAction.keys():
-#                        if v in irlAction[p].keys():
-#                            if f in irlAction[p][v].keys():
-#                                irlAction[p][v][f] = 0 if  np.isnan(vAction[(vAction['stimulusName'] == v) & (vAction['frame'] == f)]['FixationDuration'].iat[0]) == True else 1
-#                            else:
-#                                irlAction[p][v][f] = 0
-#                                irlAction[p][v][f] = 0 if  np.isnan(vAction[(vAction['stimulusName'] == v) & (vAction['frame'] == f)]['FixationDuration'].iat[0]) == True else 1
-#                        else:
-#                            irlAction[p][v] = {}
-#                            irlAction[p][v] = {f:0}
-#                    else:
-#                        irlAction[p] = {}
-#                        irlAction[p] = {v:{}}
-#                        irlAction[p][v] = {f: 0}
-#                        irlAction[p][v][f] = 0 if  np.isnan(vAction[(vAction['stimulusName'] == v) & (vAction['frame'] == f)]['FixationDuration'].iat[0]) == True else 1
-#                                
-#                    
-#        
-#        
-#        objMethod.save_obj(irlAction, "irlAction")
-        
-        irlAction = objMethod.load_obj("irlAction")
-       
-        
         self.videos.hazardousFrameFun()
         hazardousFrame = self.videos.hazardousFrame 
         
+        irlAction = {}
+        irlState = {}
         for p in particpants:
             for v in videos:
-                if v in  state[p]['scoreDV'].keys():
-                    
-                    
+                if v in state[p]['scoreDV'].keys():
+                    for f in state[p]['scoreDV'][v][0].keys():
+                        if p in irlAction.keys():
+                            if v in irlAction[p].keys():
+                                if f in irlAction[p][v].keys():
+                                    irlAction[p][v][f] = 0 if  np.isnan(state[p]['scoreDV'][v][0][f]['FixationDuration'].iat[0]) == True else 1
+                                else:
+                                    irlAction[p][v][f] = 0
+                                    irlAction[p][v][f] = 0 if  np.isnan(state[p]['scoreDV'][v][0][f]['FixationDuration'].iat[0]) == True else 1
+                            else:
+                                irlAction[p][v] = {}
+                                irlAction[p][v] = {f:0}
+                        else:
+                            irlAction[p] = {}
+                            irlAction[p] = {v:{}}
+                            irlAction[p][v] = {f: 0}
+                            irlAction[p][v][f] = 0 if  np.isnan(state[p]['scoreDV'][v][0][f]['FixationDuration'].iat[0]) == True else 1
                     fixationDuration =  dict((key,d[key]['FixationDuration'].iat[0]) for d in state[p]['scoreDV'][v] for key in d)
                     gazeX =  dict((key,d[key]['gazeX'].iat[0]) for d in state[p]['scoreDV'][v] for key in d)
                     gazeY =  dict((key,d[key]['gazeY'].iat[0]) for d in state[p]['scoreDV'][v] for key in d)
                     study =  dict((key,d[key]['study'].iat[0]) for d in state[p]['scoreDV'][v] for key in d)
-                    print(study)
-                    distance =  dict((key,d[key]['DistanceRight'].iat[0]) for d in state[p]['scoreDV'][v] for key in d)
-                    pupil =  dict((key,np.mean(d[key]['pupilRight'].iat[0], d[key]['pupilLeft'].iat[0])) for d in state[p]['scoreDV'][v] for key in d)
+                    distance =  dict((key,(d[key]['DistanceRight'].iat[0]+d[key]['DistanceLeft'].iat[0])/2) for d in state[p]['scoreDV'][v] for key in d)
+                    pupil =  dict((key,(d[key]['pupilRight'].iat[0]+d[key]['pupilLeft'].iat[0])/2) for d in state[p]['scoreDV'][v] for key in d)
+                    irlState[v] = {}
+                    irlState[v] = {'fixationDuration': fixationDuration, 'gazeX': gazeX, 'gazeY': gazeY, 'distance': distance, 'pupil': pupil}
+        
+        
+        objMethod.save_obj(irlAction, "irlAction")
+        objMethod.save_obj(irlState, "irlState")

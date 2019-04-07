@@ -9,9 +9,9 @@ from eyeCar import eyeCar
 
 def main():
     
-    dirInd = "C:/Users/Vishesh/Desktop/Sonia/eyeCar-master/Data/InputData/videoPos-demogData.csv"
-    dirDep = "C:/Users/Vishesh/Desktop/Sonia/eyeCar-master/Data/InputData/FrameData.csv"
-    dirHzrd = "C:/Users/Vishesh/Desktop/Sonia/eyeCar-master/Data/InputData/AOIData.csv"
+    dirInd = "/Users/soniabaee/Documents/Projects/EyeCar/eyeCar-Data/Data/InputData/videoPos-demogData.csv"
+    dirDep = "/Users/soniabaee/Documents/Projects/EyeCar/eyeCar-Data/Data/InputData/FrameData.csv"
+    dirHzrd = "/Users/soniabaee/Documents/Projects/EyeCar/eyeCar-Data/Data/InputData/AOIData.csv"
     
     eyecar = eyeCar(dirInd, dirDep, dirHzrd)
     

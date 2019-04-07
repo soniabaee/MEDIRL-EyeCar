@@ -19,11 +19,11 @@ class videos:
                            'Nigh_Rain_High_3','Night_Rain_High_4','Night_Rain_Town_3','Night_Sunny_High_2'] ## list of all videos
 #        self.slcGroup = group
 #        self.videoGroup = self.allVideos[0:10]
-#        self.videoFile = videoFile
+        self.videoFile = "/Users/soniabaee/Documents/Projects/EyeCar/eyeCar-Data/Data/InputData/hazardousFrame.csv"
         self.hazardousFrame = {video: {'startFrame':0,'endFrame':0} for video in self.allVideos}
      
     
-    def hazardousFrame(self):
+    def hazardousFrameFun(self):
         """
             from which frame the hazardous object was appeared
         """
