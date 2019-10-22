@@ -11,7 +11,6 @@ import numpy as np
 import pandas as pd
 import os
 import pickle
-from matplotlib import pyplot as plt
 from objectDetection import objectDection
 
 def save_object(obj, filename):
@@ -24,7 +23,7 @@ def detectRed():
     '''detecting red object in video'''
     
     directory = "/Users/soniabaee/Documents/University/Fall-2018/Human Factor/Project/videos/Video/"
-    fileName = "Day_Sunny_Town_1.mp4"
+    fileName = "Day_Sunny_High_1.mp4"
     
     cap = cv2.VideoCapture(directory + fileName)
     
@@ -247,14 +246,15 @@ def LuminosityStat(directory):
 
 def main():
     
-    directory = "/Users/soniabaee/Documents/University/Fall-2018/Human Factor/Project/videos/Video/"    
-    
+    directory = "/Users/sonia/Desktop/Projects/EyeCar/Video"    
+    saveDir = "/Users/sonia/Desktop/Projects/EyeCar/Output"
     fileNames = os.listdir(directory)
     sub = ".mp4"
     fileNames = [s for s in fileNames if sub in s]
     
     for file in fileNames:
-        objectDection(directory, file)
+        print(file)
+        objectDection(directory, saveDir, file)
 
     
 ## creating luminosity for each video   
