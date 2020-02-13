@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu May  9 17:27:07 2019
+
+@author: soniabaee
+"""
+
+
+for i in range(300,400):
+    path = "https://analytics.google.com/analytics/web/?pli=1#/report/visitors-user-activity/a77944674w188578484p185180253/_u.date00=20181001&_u.date01=20190509&_r.userId="+str(i)+"&_r.userListReportStates=%3F_u.date00=20181001%2526_u.date01=20190509%2526explorer-table.plotKeys=%5B%5D%2526explorer-table.rowStart=0%2526explorer-table.rowCount=1000&_r.userListReportId=visitors-user-id/"
+    print("--------------")
+    print(path)
