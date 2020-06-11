@@ -1,8 +1,9 @@
 # Learning the Visual Attention of Drivers via Deep Inverse Reinforcement Learning
+![medirl](https://github.com/soniabaee/eyeCar/blob/master/figures/MEDIRL-framework.png)
 
 ## Overview
 In this work, we introduce a Maximum Entropy Deep Inverse Reinforcement Learning (MEDIRL) framework for modeling the visual attention allocation of drivers in imminent rear-end collisions. Our goal is to learn the policies that _attentive drivers_ use for allocating visual attention to salient regions within their field of view, and use these learned policies to potentially flag _inattentive drivers_. We also introduce EyeCar, a new dataset comprising more than 315,000 video frames of rear-end collisions in distinct environments along with eye-tracking data from human subjects. We show that MEDIRL successfully learns task sensitive reward functions from multimodal features including front-view videos, vehicle motion patterns, and semantic and instance segmentations. Additionally, MEDIRL establishes a new state-of-the-art accuracy for visual attention prediction on the following large-scale driving attention benchmark datasets: BDD-A, DADA-2000, and DR(eye)VE.
-
+![medirl-actionlist](https://github.com/soniabaee/eyeCar/blob/master/figures/MEDIRL-actionset.png)
 
 ## Requirements
 
