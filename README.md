@@ -42,6 +42,14 @@ where the `(medirl)` prefix indicates that you are currently in the
 after creating or opening a jupyter notebook.
 
 
+## Model
+You can run the main script to get the result of each component:
+
+```bash
+python main.py
+```
+We saved the best/last of models of each module in [Models](https://github.com/soniabaee/eyeCar/tree/master/Models) folder.
+
 ## Data
 You can accesss to the data in this [DATA](https://github.com/soniabaee/eyeCar/tree/master/Data)
 
