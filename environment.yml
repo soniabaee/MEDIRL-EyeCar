@@ -1,0 +1,36 @@
+name: medirl
+dependencies:
+- python=3.7
+- pylint
+- pip
+- conda
+- numpy
+- pandas >=0.24.*
+- matplotlib
+- seaborn
+- scikit-learn
+- ipython
+- jupyter
+- opencv
+- scikit-image 
+- cython 
+- opencv 
+- seaborn 
+- h5py 
+- pymongo
+- SQLAlchemy
+- mysql
+- jupyter_contrib_nbextensions
+- anaconda-project
+- pip:
+  - sacred
+  - mysqlclient
+  - nbdime
+  - datalad
+  - ipykernel
+  - torchVision
+  - torch 
+  - torchvision
+channels:
+- defaults
+- conda-forge
