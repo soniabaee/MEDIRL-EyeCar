@@ -1,12 +1,22 @@
-# Learning the Visual Attention of Drivers via Deep Inverse Reinforcement Learning
+# MEDIRL: Predicting the Visual Attention of Drivers via Deep Inverse Reinforcement Learning
 ![medirl](https://github.com/soniabaee/eyeCar/blob/master/figures/figure1.png)
 
 ## Overview
-![medirl-visual-module](https://github.com/soniabaee/eyeCar/blob/master/figures/visual.png)
-![medirl-driving-module](https://github.com/soniabaee/eyeCar/blob/master/figures/driving.png)
-![medirl-attention-module](https://github.com/soniabaee/eyeCar/blob/master/figures/attention.png)
-
 Inspired by human visual attention, we introduce a Maximum Entropy Deep Inverse Reinforcement Learning~(MEDIRL) framework for modeling the visual attention allocation of drivers in imminent rear-end collisions. MEDIRL is composed of visual, driving, and attention modules. Given a front-view driving video and corresponding eye fixations from humans, the visual and driving modules extract generic and driving-specific visual features, respectively. Finally, the attention module learns the intrinsic task-sensitive reward functions induced by eye fixation policies recorded from attentive drivers. MEDIRL uses the learned policies to predict visual attention allocation of drivers. We also introduce EyeCar, a new driver visual attention dataset during accident-prone situations. We conduct comprehensive experiments and show that MEDIRL outperforms previous state-of-the-art methods on driving task-related visual attention allocation on the following large-scale driving attention benchmark datasets: DR(eye)VE, BDD-A, and DADA-2000. The code and dataset are provided for reproducibility.
+
+## Modules of MEDIRL
+![medirl-visual-module](https://github.com/soniabaee/eyeCar/blob/master/figures/visual.png)
+1. The visual module: The visual module extracts low and mid-level visual cues that are useful for a variety of visual attention tasks. We rely on pre-existing models for semantic and instance segmentation, as well as depth estimation. In addition, we propose an approach to detect brake lights and traffic lights. Figure~\ref{medirl-visual-module} displays an overview of these individual components.
+
+
+![medirl-driving-module](https://github.com/soniabaee/eyeCar/blob/master/figures/driving.png)
+2. The driving module: The driving module extracts driving-specific visual features for driving tasks. Overview of the driving module is shown in Figure~\ref{medirl-driving-module}.
+
+
+![medirl-attention-module](https://github.com/soniabaee/eyeCar/blob/master/figures/attention.png)
+3. Drivers pay attention to the task-related regions of the scene to filter out irrelevant information and ultimately make optimal decisions. Drivers do this with a sequence of eye fixations. To learn this process in various driving tasks ending in rear-end collisions, we cast it as a maximum inverse reinforcement learning approach. Figure~\ref{medirl-attention-module} depicts an illustration of the approach.
+
+
 
 ## Requirements
 
