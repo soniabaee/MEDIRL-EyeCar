@@ -1,8 +1,9 @@
 # import necessary libraries
 from medirl import medirl
-from VFE.VFE import *
-from IE.IE import *
-from AP.AP import *
+from visual.visual import *
+from driving.driving import *
+from tool import fixation
+from attention.attention import *
 
 import os
 import pandas as pd
@@ -14,25 +15,35 @@ def main():
     saveDir = "./medirl-master/Output"
     fileNames = os.listdir(directory)
     sub = ".mp4"
-    fileNames = [s for s in fileNames if sub in s]
+    VfileNames = [s for s in fileNames if sub in s]
+
+    sub = ".txt"
+    efileNames = [s for s in fileNames if sub in s]
     
     #---------------------------------------------------
-	#VFE component
-    VFEOutput =[]
-    for file in fileNames:
+	#virtual module
+    visualOutput =[]
+    for file in VfileNames:
         print(file)
-        VFE(directory, saveDir, file)
+        visualOutput = visual(directory, saveDir, file)
     
     #---------------------------------------------------
-    #IE component
-    IEoutput = []
-    for file in fileNames:
+    #driving module
+    drivingOutput = []
+    for file in VfileNames:
         print(file)
-        IEoutput.append(IE(directory, saveDir, file))
+        drivingOutput = driving(directory, saveDir, file)
 
     #---------------------------------------------------
-    #AP component
-    AP(IEoutput,VFEOutput)
+    #eye Fixation
+    eyeFixationOutput = []
+    for file in efileNames:
+        print(file)
+        eyeFixationOutput = fixation(directory, saveDir, file)
+
+    #---------------------------------------------------
+    #attention module
+    attention(visualOutput,drivingOutput, eyeFixationOutput)
     
     
 if __name__ == '__main__':
