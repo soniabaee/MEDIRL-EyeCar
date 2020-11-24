@@ -2,8 +2,11 @@
 ![medirl](https://github.com/soniabaee/eyeCar/blob/master/figures/figure1.png)
 
 ## Overview
-In this work, we introduce a Maximum Entropy Deep Inverse Reinforcement Learning (MEDIRL) framework for modeling the visual attention allocation of drivers in imminent rear-end collisions. Our goal is to learn the policies that _attentive drivers_ use for allocating visual attention to salient regions within their field of view, and use these learned policies to potentially flag _inattentive drivers_. We also introduce EyeCar, a new dataset comprising more than 315,000 video frames of rear-end collisions in distinct environments along with eye-tracking data from human subjects. We show that MEDIRL successfully learns task sensitive reward functions from multimodal features including front-view videos, vehicle motion patterns, and semantic and instance segmentations. Additionally, MEDIRL establishes a new state-of-the-art accuracy for visual attention prediction on the following large-scale driving attention benchmark datasets: BDD-A, DADA-2000, and DR(eye)VE.
-![medirl-actionlist](https://github.com/soniabaee/eyeCar/blob/master/figures/MEDIRL-actionset.png)
+![medirl-visual-module](https://github.com/soniabaee/eyeCar/blob/master/figures/visual.png)
+![medirl-driving-module](https://github.com/soniabaee/eyeCar/blob/master/figures/driving.png)
+![medirl-attention-module](https://github.com/soniabaee/eyeCar/blob/master/figures/attention.png)
+
+Inspired by human visual attention, we introduce a Maximum Entropy Deep Inverse Reinforcement Learning~(MEDIRL) framework for modeling the visual attention allocation of drivers in imminent rear-end collisions. MEDIRL is composed of visual, driving, and attention modules. Given a front-view driving video and corresponding eye fixations from humans, the visual and driving modules extract generic and driving-specific visual features, respectively. Finally, the attention module learns the intrinsic task-sensitive reward functions induced by eye fixation policies recorded from attentive drivers. MEDIRL uses the learned policies to predict visual attention allocation of drivers. We also introduce EyeCar, a new driver visual attention dataset during accident-prone situations. We conduct comprehensive experiments and show that MEDIRL outperforms previous state-of-the-art methods on driving task-related visual attention allocation on the following large-scale driving attention benchmark datasets: DR(eye)VE, BDD-A, and DADA-2000. The code and dataset are provided for reproducibility.
 
 ## Requirements
 
@@ -51,7 +54,7 @@ python main.py
 We saved the best/last of models of each module in [Models](https://github.com/soniabaee/eyeCar/tree/master/Models) folder.
 
 ## Data
-You can accesss to the data in this [DATA](https://github.com/soniabaee/eyeCar/tree/master/Data)
+You can accesss to the data in this [EyeCar](https://github.com/soniabaee/eyeCar/tree/master/EyeCar)
 
 ## License
 
