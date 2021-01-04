@@ -26,65 +26,65 @@ color_index = {'bus': 'red', 'handbag': 'steelblue', 'giraffe': 'orange', 'spoon
 FILENAME = ""
 
 def combineCSV():
-	'''
-		here we combined all the data in a single csv file
-	'''
+    '''
+        here we combined all the data in a single csv file
+    '''
 
-	path = os.getcwd() + "/FrameObj/"
+    path = os.getcwd() + "/FrameObj/"
 
-	files = glob.gob(path + "*.txt")
-	Names = [f.split("_output")[0] for f in files]
+    files = glob.gob(path + "*.txt")
+    Names = [f.split("_output")[0] for f in files]
 
-	for n in Names:
-	    listFiles = [f for f in os.listdir(path) if f.startswith(n)]
-	    combined = pd.concat([pd.read_csv(f) for f in listFiles])
-	    combined.to_csv()
+    for n in Names:
+        listFiles = [f for f in os.listdir(path) if f.startswith(n)]
+        combined = pd.concat([pd.read_csv(f) for f in listFiles])
+        combined.to_csv()
 
 
 def generateFrame(videoName):
-	'''
-		here we extract all the frames of each video to assign
-		visual attention allocation map on them
-	'''
-	if len(videoName) == 0:
-		os.chdir("./medirl-master/Code/")
-		VideoDir = "./medirl-master/videos/crash-video"
-		videos = glob.glob(VideoDir + '/*.mp4')
-		pathOut = "./medirl-master/videos/crash-video/output"
+    '''
+        here we extract all the frames of each video to assign
+        visual attention allocation map on them
+    '''
+    if len(videoName) == 0:
+        os.chdir("./medirl-master/Code/")
+        VideoDir = "./medirl-master/videos/crash-video"
+        videos = glob.glob(VideoDir + '/*.mp4')
+        pathOut = "./medirl-master/videos/crash-video/output"
 
-		for v in videos:
-			# v = "./medirl-master/videos/crash-video/2934487_detected.avi"
-			vidcap = cv2.VideoCapture(v)
-			success,image = vidcap.read()
-			instance_segmentation_api(image, 0.75, rect_th=1, text_size=0.3, text_th=1)
-			folder = "Frames"
-			directory = "/"+ pathOut + "/" + folder
-			if not os.path.exists(directory):
-			    os.makedirs(directory)
-			count = 0
-			success = True
-			while success:
-			    cv2.imwrite(os.path.join(directory, "frame{:d}.png".format(count)), image)
-			    success,image = vidcap.read()
-			    print('Read a new frame: ', success)
-			    count += 1
-	else:
+        for v in videos:
+            # v = "./medirl-master/videos/crash-video/2934487_detected.avi"
+            vidcap = cv2.VideoCapture(v)
+            success,image = vidcap.read()
+            instance_segmentation_api(image, 0.75, rect_th=1, text_size=0.3, text_th=1)
+            folder = "Frames"
+            directory = "/"+ pathOut + "/" + folder
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+            count = 0
+            success = True
+            while success:
+                cv2.imwrite(os.path.join(directory, "frame{:d}.png".format(count)), image)
+                success,image = vidcap.read()
+                print('Read a new frame: ', success)
+                count += 1
+    else:
 
-		v = videoName
-		vidcap = cv2.VideoCapture(v)
-		success,image = vidcap.read()
-		instance_segmentation_api(image, 0.75, rect_th=1, text_size=0.3, text_th=1)
-		folder = "Frames"
-		directory = "/"+ pathOut + "/" + folder
-		if not os.path.exists(directory):
-		    os.makedirs(directory)
-		count = 0
-		success = True
-		while success:
-		    cv2.imwrite(os.path.join(directory, "frame{:d}.png".format(count)), image)
-		    success,image = vidcap.read()
-		    print('Read a new frame: ', success)
-		    count += 1
+        v = videoName
+        vidcap = cv2.VideoCapture(v)
+        success,image = vidcap.read()
+        instance_segmentation_api(image, 0.75, rect_th=1, text_size=0.3, text_th=1)
+        folder = "Frames"
+        directory = "/"+ pathOut + "/" + folder
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        count = 0
+        success = True
+        while success:
+            cv2.imwrite(os.path.join(directory, "frame{:d}.png".format(count)), image)
+            success,image = vidcap.read()
+            print('Read a new frame: ', success)
+            count += 1
 
 
 def forSecond(frame_number, output_arrays, count_arrays, average_count, returned_frame):
@@ -127,11 +127,9 @@ def forFrame(frame_number, output_array, output_count):
 #    print("------------END OF A FRAME --------------")
 
 def objectDection(execution_path, save_path,fileName):
-
-	'''
-		detecting object for each frame
-	'''
-    
+    '''
+        detecting object for each frame
+    '''
     detector = VideoObjectDetection()
     detector.setModelTypeAsYOLOv3()
     detector.setModelPath( os.path.join(execution_path , "yolo.h5"))
@@ -161,44 +159,41 @@ def save_object(obj, filename):
     
 
 def detectRed():
-    '''detecting red object in video'''
-    
+    '''
+    detecting red object in video
+    '''
     os.chdir("./medirl-master/Code/")
-	VideoDir = "./medirl-master/videos/crash-video"
-	videos = glob.glob(VideoDir + '/*.mp4')
-
-
-	for v in videos:
+    VideoDir = "./medirl-master/videos/crash-video"
+    videos = glob.glob(VideoDir + '/*.mp4')
     
-	    cap = cv2.VideoCapture(v)
-    
+    for v in videos:
+        cap = cv2.VideoCapture(v)
         while(1):
-	        
-	        # Take each frame
-	        _, frame = cap.read()
-	        
-	        # Convert BGR to HSV
-	        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-	    
-	        # define range of blue color in HSV
-	        lower_blue = np.array([110,50,50])
-	        upper_blue = np.array([130,255,255])
-	    
-	        # Threshold the HSV image to get only blue colors
-	        mask = cv2.inRange(hsv, lower_blue, upper_blue)
-	    
-	        # Bitwise-AND mask and original image
-	        res = cv2.bitwise_and(frame,frame, mask= mask)
-	    
-	        cv2.imshow('frame',frame)
-	        cv2.imshow('mask',mask)
-	        cv2.imshow('res',res)
-	    
-	        k = cv2.waitKey(5) & 0xFF
-	        if k == 27:
-	            break
-
-	    cv2.destroyAllWindows()
+            
+            # Take each frame
+            _, frame = cap.read()
+            
+            # Convert BGR to HSV
+            hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+        
+            # define range of blue color in HSV
+            lower_blue = np.array([110,50,50])
+            upper_blue = np.array([130,255,255])
+        
+            # Threshold the HSV image to get only blue colors
+            mask = cv2.inRange(hsv, lower_blue, upper_blue)
+        
+            # Bitwise-AND mask and original image
+            res = cv2.bitwise_and(frame,frame, mask= mask)
+        
+            cv2.imshow('frame',frame)
+            cv2.imshow('mask',mask)
+            cv2.imshow('res',res)
+        
+            k = cv2.waitKey(5) & 0xFF
+            if k == 27:
+                break
+        cv2.destroyAllWindows()
 
 
 
@@ -214,47 +209,49 @@ def create_hue_mask(image, lower_color, upper_color):
 
 
 def showLight():
-    '''Show light'''
+    '''
+        Show light
+    '''
+    
     os.chdir("./medirl-master/Code/")
-	VideoDir = "./medirl-master/videos/crash-video"
-	videos = glob.glob(VideoDir + '/*.mp4')
-
-
-	for v in videos:
+    VideoDir = "./medirl-master/videos/crash-video"
+    videos = glob.glob(VideoDir + '/*.mp4')
     
-	    cap = cv2.VideoCapture(v)
+    for v in videos:
     
-	    while(cap.isOpened()):
-	        # Capture frame-by-frame
-	        ret, frame = cap.read()
-	        blur_frame = cv2.medianBlur(frame, 3)
-	        # Our operations on the frame come here
-	        hsv_image = cv2.cvtColor(blur_frame, cv2.COLOR_BGR2HSV)
-	        
-	        # Get lower red hue
-	        lower_red_hue = create_hue_mask(hsv_image, [0, 100, 100], [10, 255, 255])
-	        
-	        # Get higher red hue
-	        higher_red_hue = create_hue_mask(hsv_image, [160, 100, 100], [179, 255, 255])
-	        full_image = cv2.addWeighted(lower_red_hue, 1.0, higher_red_hue, 1.0, 0.0)
-	        # Convert image to grayscale
-	        image_gray = cv2.cvtColor(full_image, cv2.COLOR_BGR2GRAY)
+        cap = cv2.VideoCapture(v)
+    
+        while(cap.isOpened()):
+            # Capture frame-by-frame
+            ret, frame = cap.read()
+            blur_frame = cv2.medianBlur(frame, 3)
+            # Our operations on the frame come here
+            hsv_image = cv2.cvtColor(blur_frame, cv2.COLOR_BGR2HSV)
+            
+            # Get lower red hue
+            lower_red_hue = create_hue_mask(hsv_image, [0, 100, 100], [10, 255, 255])
+            
+            # Get higher red hue
+            higher_red_hue = create_hue_mask(hsv_image, [160, 100, 100], [179, 255, 255])
+            full_image = cv2.addWeighted(lower_red_hue, 1.0, higher_red_hue, 1.0, 0.0)
+            # Convert image to grayscale
+            image_gray = cv2.cvtColor(full_image, cv2.COLOR_BGR2GRAY)
 
-	        
-	        # Display the resulting frame
-	        cv2.imshow('frame',image_gray)
-	        if cv2.waitKey(1) & 0xFF == ord('q'):
-	            break
-	    
-	    # When everything done, release the capture
-	    cap.release()
-	    
-	    cv2.destroyAllWindows()
+            
+            # Display the resulting frame
+            cv2.imshow('frame',image_gray)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+        
+        # When everything done, release the capture
+        cap.release()
+        
+        cv2.destroyAllWindows()
   
     
 def show_hsv_equalized(directory, fileName):
     '''
-    	show hsv hist equalized
+        show hsv hist equalized
     '''
     
     cap = cv2.VideoCapture(directory + fileName)
@@ -301,87 +298,83 @@ def hsvThreshold():
     '''showing HSV threshold'''
     
     os.chdir("./medirl-master/Code/")
-	VideoDir = "./medirl-master/videos/crash-video"
-	videos = glob.glob(VideoDir + '/*.mp4')
-
-
-	for v in videos:
+    VideoDir = "./medirl-master/videos/crash-video"
+    videos = glob.glob(VideoDir + '/*.mp4')
     
-	    cap = cv2.VideoCapture(v)
-	    
-	    def nothing(x):
-	        pass
+    for v in videos:
+        cap = cv2.VideoCapture(v)
+        def nothing(x):
+            pass
+        
+        useCamera=False
+        
+        # Create a window
+        cv2.namedWindow('image')
+        
+        # create trackbars for color change
+        cv2.createTrackbar('HMin','image',0,179,nothing) # Hue is from 0-179 for Opencv
+        cv2.createTrackbar('SMin','image',0,255,nothing)
+        cv2.createTrackbar('VMin','image',0,255,nothing)
+        cv2.createTrackbar('HMax','image',0,179,nothing)
+        cv2.createTrackbar('SMax','image',0,255,nothing)
+        cv2.createTrackbar('VMax','image',0,255,nothing)
+        
+        # Set default value for MAX HSV trackbars.
+        cv2.setTrackbarPos('HMax', 'image', 179)
+        cv2.setTrackbarPos('SMax', 'image', 255)
+        cv2.setTrackbarPos('VMax', 'image', 255)
+        
+        # Initialize to check if HSV min/max value changes
+        hMin = sMin = vMin = hMax = sMax = vMax = 0
+        phMin = psMin = pvMin = phMax = psMax = pvMax = 0
+        
+        
+        
+        while(1):
+        
+            
+            ret, img = cap.read()
+            output = img
+        
+            # get current positions of all trackbars
+            hMin = cv2.getTrackbarPos('HMin','image')
+            sMin = cv2.getTrackbarPos('SMin','image')
+            vMin = cv2.getTrackbarPos('VMin','image')
+        
+            hMax = cv2.getTrackbarPos('HMax','image')
+            sMax = cv2.getTrackbarPos('SMax','image')
+            vMax = cv2.getTrackbarPos('VMax','image')
+        
+            # Set minimum and max HSV values to display
+            lower = np.array([hMin, sMin, vMin])
+            upper = np.array([hMax, sMax, vMax])
+        
+            # Create HSV Image and threshold into a range.
+            hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+            mask = cv2.inRange(hsv, lower, upper)
+            output = cv2.bitwise_and(img,img, mask= mask)
+        
+            # Print if there is a change in HSV value
+            if( (phMin != hMin) | (psMin != sMin) | (pvMin != vMin) | (phMax != hMax) | (psMax != sMax) | (pvMax != vMax) ):
+                print("(hMin = %d , sMin = %d, vMin = %d), (hMax = %d , sMax = %d, vMax = %d)" % (hMin , sMin , vMin, hMax, sMax , vMax))
+                phMin = hMin
+                psMin = sMin
+                pvMin = vMin
+                phMax = hMax
+                psMax = sMax
+                pvMax = vMax
+        
+            # Display output image
+            cv2.imshow('image',output)
+        
+            # Wait longer to prevent freeze for videos.
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+        
+        # Release resources
 
-	    useCamera=False
-	    
-	    
-	    # Create a window
-	    cv2.namedWindow('image')
-	    
-	    # create trackbars for color change
-	    cv2.createTrackbar('HMin','image',0,179,nothing) # Hue is from 0-179 for Opencv
-	    cv2.createTrackbar('SMin','image',0,255,nothing)
-	    cv2.createTrackbar('VMin','image',0,255,nothing)
-	    cv2.createTrackbar('HMax','image',0,179,nothing)
-	    cv2.createTrackbar('SMax','image',0,255,nothing)
-	    cv2.createTrackbar('VMax','image',0,255,nothing)
-	    
-	    # Set default value for MAX HSV trackbars.
-	    cv2.setTrackbarPos('HMax', 'image', 179)
-	    cv2.setTrackbarPos('SMax', 'image', 255)
-	    cv2.setTrackbarPos('VMax', 'image', 255)
-	    
-	    # Initialize to check if HSV min/max value changes
-	    hMin = sMin = vMin = hMax = sMax = vMax = 0
-	    phMin = psMin = pvMin = phMax = psMax = pvMax = 0
-	    
-	    
-	    
-	    while(1):
-	    
-	        
-	        ret, img = cap.read()
-	        output = img
-	    
-	        # get current positions of all trackbars
-	        hMin = cv2.getTrackbarPos('HMin','image')
-	        sMin = cv2.getTrackbarPos('SMin','image')
-	        vMin = cv2.getTrackbarPos('VMin','image')
-	    
-	        hMax = cv2.getTrackbarPos('HMax','image')
-	        sMax = cv2.getTrackbarPos('SMax','image')
-	        vMax = cv2.getTrackbarPos('VMax','image')
-	    
-	        # Set minimum and max HSV values to display
-	        lower = np.array([hMin, sMin, vMin])
-	        upper = np.array([hMax, sMax, vMax])
-	    
-	        # Create HSV Image and threshold into a range.
-	        hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-	        mask = cv2.inRange(hsv, lower, upper)
-	        output = cv2.bitwise_and(img,img, mask= mask)
-	    
-	        # Print if there is a change in HSV value
-	        if( (phMin != hMin) | (psMin != sMin) | (pvMin != vMin) | (phMax != hMax) | (psMax != sMax) | (pvMax != vMax) ):
-	            print("(hMin = %d , sMin = %d, vMin = %d), (hMax = %d , sMax = %d, vMax = %d)" % (hMin , sMin , vMin, hMax, sMax , vMax))
-	            phMin = hMin
-	            psMin = sMin
-	            pvMin = vMin
-	            phMax = hMax
-	            psMax = sMax
-	            pvMax = vMax
-	    
-	        # Display output image
-	        cv2.imshow('image',output)
-	    
-	        # Wait longer to prevent freeze for videos.
-	        if cv2.waitKey(1) & 0xFF == ord('q'):
-	            break
-	    
-	    # Release resources
-
-	    cap.release()
-	    cv2.destroyAllWindows()
+        cap.release()
+        cv2.destroyAllWindows()
     
     
 def LuminosityStat(directory):
@@ -399,17 +392,17 @@ def LuminosityStat(directory):
     
 def VFE():
 
-	os.chdir("./medirl-master/Code/")
-	VideoDir = "./medirl-master/videos/crash-video"
-	videos = glob.glob(VideoDir + '/*.mp4')
-	pathOut = "./medirl-master/videos/crash-video/output"
+    os.chdir("./medirl-master/Code/")
+    VideoDir = "./medirl-master/videos/crash-video"
+    videos = glob.glob(VideoDir + '/*.mp4')
+    pathOut = "./medirl-master/videos/crash-video/output"
 
-	for v in videos:
-		objectDection(v, VideoDir)
-		generateFrame(v, VideoDir)
-		combineCSV(v, VideoDir)
-		showLight(v, VideoDir)
-		show_hsv_equalized(v, VideoDir)
-		hsvThreshold(v, VideoDir)
-		LuminosityStat(v, VideoDir)
-		detectRed(v, VideoDir)
+    for v in videos:
+        objectDection(v, VideoDir)
+        generateFrame(v, VideoDir)
+        combineCSV(v, VideoDir)
+        showLight(v, VideoDir)
+        show_hsv_equalized(v, VideoDir)
+        hsvThreshold(v, VideoDir)
+        LuminosityStat(v, VideoDir)
+        detectRed(v, VideoDir)

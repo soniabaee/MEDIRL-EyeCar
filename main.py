@@ -1,17 +1,13 @@
 # import necessary libraries
-from medirl import medirl
 from visual.visual import *
 from driving.driving import *
 from tool import fixation
 from attention.attention import *
 
 import os
-import pandas as pd
 
 def main():
-
-	
-	directory = "./medirl-master/videos/crash-video"    
+    directory = "./medirl-master/videos/crash-video"    
     saveDir = "./medirl-master/Output"
     fileNames = os.listdir(directory)
     sub = ".mp4"
@@ -21,7 +17,7 @@ def main():
     efileNames = [s for s in fileNames if sub in s]
     
     #---------------------------------------------------
-	#virtual module
+	#visual module
     visualOutput =[]
     for file in VfileNames:
         print(file)
