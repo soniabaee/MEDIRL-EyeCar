@@ -6,6 +6,7 @@ Inspired by human visual attention, we introduce a Maximum Entropy Deep Inverse 
 
 ## Dataset (EyeCar)
 We select 21 front-view videos that were captured in various traffic, weather, and day light conditions. Each video is 30sec in length and contains typical driving tasks~(e.g., lane-keeping, merging-in, and braking) ending to rear-end collisions. Note that all the conditions were counterbalanced among all the participants. Moreover, EyeCar provides information about the speed and GPS of the ego-vehicle~(see Table~\ref{tbl:data-recap}). In addition, each video frame comprises 4.6 vehicles on average, making EyeCar driving scenes more complex than other visual attention datasets. The EyeCar dataset contains 3.5h of gaze behavior~(aggregated and raw) from the 20 participants, as well as more than 315,000 rear-end collisions video frames. In EyeCar dataset, we account for the sequence of eye fixations, and thus we emphasize on attention shift to the salient regions in a complex driving scene. EyeCar also provides a rich set of annotations(e.g., scene tagging, object bounding, lane marking, etc.). Compared  to  prior  datasets,  EyeCar  is  the  only dataset  captured  from  a  point-of-view~(POV)  perspective, involving collisions, and including metadata for both speedand  GPS.  EyeCar  also  has  the  largest  average  number  of vehicles per scene, and gaze data for 20 participants.
+
 ![EyeCar-Dataset](https://github.com/soniabaee/eyeCar/blob/master/figures/eyeCar.png)
 
 ## Modules of MEDIRL
