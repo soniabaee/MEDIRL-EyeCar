@@ -12,6 +12,7 @@ dependencies:
 - ipython
 - jupyter
 - opencv
+- torch
 - scikit-image 
 - cython 
 - opencv 
