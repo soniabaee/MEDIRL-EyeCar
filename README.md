@@ -71,4 +71,16 @@ We saved the best/last of models of each module in [Models](https://github.com/s
 ## Data
 You can accesss to the data in this [EyeCar](https://github.com/soniabaee/eyeCar/tree/master/EyeCar)
 
+## Citing
+If you find our paper/code useful, please consider citing:
+```bash
+@inproceedings{baee2019eyecar,
+  title={EyeCar: Modeling the Visual Attention Allocation of Drivers in Semi-Autonomous Vehicles},
+  author={Baee, Sonia and Pakdamanian, Erfan and Roman, Vicente Ordonez and Kim, Inki and Feng, Lu and Barnes, Laura},
+  booktitle={arXiv preprint arXiv:1912.07773},
+  year={2019}
+}
+```
+
+
 
