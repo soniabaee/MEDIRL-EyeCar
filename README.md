@@ -1,4 +1,4 @@
-# MEDIRL: Predicting the Visual Attention of Drivers via Deep Inverse Reinforcement Learning
+# [MEDIRL: Predicting the Visual Attention of Drivers via Deep Inverse Reinforcement Learning](https://arxiv.org/pdf/1912.07773.pdf)
 ![medirl](https://github.com/soniabaee/eyeCar/blob/master/figures/figure1.png)
 
 ## Overview
