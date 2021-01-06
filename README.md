@@ -1,4 +1,6 @@
 # [MEDIRL: Predicting the Visual Attention of Drivers via Deep Inverse Reinforcement Learning](https://arxiv.org/pdf/1912.07773.pdf)
+[Sonia Baee](http://soniabaee.com), [Erfan Pakdamanian](http://soniabaee.com),  [Inki Kim](http://www.sys.virginia.edu/inki-kim.html), [Lu Feng](https://www.cs.virginia.edu/~lufeng/), [Vicente Ordonez](http://vicenteordonez.com/), [Laura Barnes](http://lauraebarnes.com/)
+
 ![medirl](https://github.com/soniabaee/eyeCar/blob/master/figures/figure1.png)
 
 ## Overview
@@ -72,7 +74,7 @@ We saved the best/last of models of each module in [Models](https://github.com/s
 You can accesss to the data in this [EyeCar](https://github.com/soniabaee/eyeCar/tree/master/EyeCar)
 
 ## Citing
-If you find our paper/code useful, please consider citing:
+If you find this paper/code useful, please consider citing our paper:
 ```bash
   @inproceedings{baee2019eyecar,
     title={EyeCar: Modeling the Visual Attention Allocation of Drivers in Semi-Autonomous Vehicles},
