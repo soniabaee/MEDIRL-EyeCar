@@ -24,6 +24,8 @@ We select 21 front-view videos that were captured in various traffic, weather, a
 3. **The attention module**: Drivers pay attention to the task-related regions of the scene to filter out irrelevant information and ultimately make optimal decisions. Drivers do this with a sequence of eye fixations. To learn this process in various driving tasks ending in rear-end collisions, we cast it as a maximum inverse reinforcement learning approach.
 
 
+## Some Results:
+![medirl-result](https://github.com/soniabaee/eyeCar/blob/master/figures/results.png)
 
 ## Requirements
 
