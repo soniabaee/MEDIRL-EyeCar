@@ -1,5 +1,5 @@
 # [MEDIRL: Predicting the Visual Attention of Drivers via Deep Inverse Reinforcement Learning](https://arxiv.org/pdf/1912.07773.pdf)
-[Sonia Baee](http://soniabaee.com), [Erfan Pakdamanian](http://soniabaee.com),  [Inki Kim](http://www.sys.virginia.edu/inki-kim.html), [Lu Feng](https://www.cs.virginia.edu/~lufeng/), [Vicente Ordonez](http://vicenteordonez.com/), [Laura Barnes](http://www.lauraebarnes.com)
+[Sonia Baee](http://soniabaee.com), [Erfan Pakdamanian](http://soniabaee.com),  [Inki Kim](http://www.sys.virginia.edu/inki-kim.html), [Lu Feng](https://www.cs.virginia.edu/~lufeng/), [Vicente Ordonez](http://vicenteordonez.com/), [Laura Barnes](https://faculty.virginia.edu/S2HeLab/index.php)
 
 ![medirl](https://github.com/soniabaee/eyeCar/blob/master/figures/figure1.png)
 
