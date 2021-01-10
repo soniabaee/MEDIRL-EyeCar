@@ -29,7 +29,7 @@ We select 21 front-view videos that were captured in various traffic, weather, a
 
 ## Requirements
 
-The simplest way to clone the development environmen is with the 
+The simplest way to clone the development environment is with the 
 `anaconda-project` and `conda-env` systems; these can be installed with [Anaconda](https://www.anaconda.com/) with the command
 
 ```bash
