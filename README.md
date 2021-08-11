@@ -1,11 +1,17 @@
+**This repo is under construction and we will add the clean and most up to dated code shortly. Stay tuned!**
+
+## To - Do
+- [ ] Revise the code and add the missed functions
+- [ ] Add the final dataset
+- [ ] Change the format of the data to the .json file (EyeCar)
+- [ ] Add the trained models
+
 # [MEDIRL: Predicting the Visual Attention of Drivers via Deep Inverse Reinforcement Learning](https://arxiv.org/pdf/1912.07773.pdf)
 [Sonia Baee](http://soniabaee.com), [Erfan Pakdamanian](http://www.cs.virginia.edu/~ep2ca/),  [Inki Kim](http://www.sys.virginia.edu/inki-kim.html), [Lu Feng](https://www.cs.virginia.edu/~lufeng/), [Vicente Ordonez](http://vicenteordonez.com/), [Laura Barnes](https://faculty.virginia.edu/S2HeLab/index.php)
 
 ![medirl](https://github.com/soniabaee/eyeCar/blob/master/figures/paper8.png)
 
-## To - Do
-- [ ] Revise the code and add the missed functions
-- [ ] Change the format of the data to the .json file (EyeCar)
+
 
 
 ## Overview
