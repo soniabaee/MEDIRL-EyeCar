@@ -1,11 +1,13 @@
-# [MEDIRL: Predicting the Visual Attention of Drivers via Deep Inverse Reinforcement Learning](https://arxiv.org/pdf/1912.07773.pdf)
+# [MEDIRL: Predicting the Visual Attention of Drivers via Deep Inverse Reinforcement Learning](https://openaccess.thecvf.com/content/ICCV2021/papers/Baee_MEDIRL_Predicting_the_Visual_Attention_of_Drivers_via_Maximum_Entropy_ICCV_2021_paper.pdf)
 [Sonia Baee](http://soniabaee.com), [Erfan Pakdamanian](http://www.cs.virginia.edu/~ep2ca/),  [Inki Kim](http://www.sys.virginia.edu/inki-kim.html), [Lu Feng](https://www.cs.virginia.edu/~lufeng/), [Vicente Ordonez](http://vicenteordonez.com/), [Laura Barnes](https://faculty.virginia.edu/S2HeLab/index.php)
+
+**Published at [ICCV-2021](https://openaccess.thecvf.com/content/ICCV2021/papers/Baee_MEDIRL_Predicting_the_Visual_Attention_of_Drivers_via_Maximum_Entropy_ICCV_2021_paper.pdf)!**
 
 
 <!-- ![ICCV Poster](https://github.com/soniabaee/MEDIRL-EyeCar/blob/master/iccv21_poster_7007_medirl.png) -->
 
 
-**This repo is under construction and we will add the clean and most up to dated code shortly. Stay tuned!**
+*This repo is under construction and we will add the clean and most up to dated code shortly. Stay tuned!*
 ## To - Do
 - [ ] Revise the code and add the missed functions
 - [ ] Add the final dataset
