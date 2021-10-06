@@ -2,7 +2,7 @@
 [Sonia Baee](http://soniabaee.com), [Erfan Pakdamanian](http://www.cs.virginia.edu/~ep2ca/),  [Inki Kim](http://www.sys.virginia.edu/inki-kim.html), [Lu Feng](https://www.cs.virginia.edu/~lufeng/), [Vicente Ordonez](http://vicenteordonez.com/), [Laura Barnes](https://faculty.virginia.edu/S2HeLab/index.php)
 
 
-![ICCV Poster](https://github.com/soniabaee/MEDIRL-EyeCar/blob/master/iccv21_poster_7007_medirl.png)
+<!-- ![ICCV Poster](https://github.com/soniabaee/MEDIRL-EyeCar/blob/master/iccv21_poster_7007_medirl.png) -->
 
 
 **This repo is under construction and we will add the clean and most up to dated code shortly. Stay tuned!**
