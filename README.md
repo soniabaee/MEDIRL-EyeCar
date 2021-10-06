@@ -1,6 +1,9 @@
 ## **News: This paper got accepted at ICCV 2021**
 **This repo is under construction and we will add the clean and most up to dated code shortly. Stay tuned!**
 
+![ICCV Poster](https://github.com/soniabaee/MEDIRL-EyeCar/blob/master/iccv21_poster_7007_medirl.pdf)
+
+
 ## To - Do
 - [ ] Revise the code and add the missed functions
 - [ ] Add the final dataset
