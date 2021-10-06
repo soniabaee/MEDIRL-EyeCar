@@ -1,32 +1,33 @@
-## **News: This paper got accepted at ICCV 2021**
+# [MEDIRL: Predicting the Visual Attention of Drivers via Deep Inverse Reinforcement Learning](https://arxiv.org/pdf/1912.07773.pdf)
+[Sonia Baee](http://soniabaee.com), [Erfan Pakdamanian](http://www.cs.virginia.edu/~ep2ca/),  [Inki Kim](http://www.sys.virginia.edu/inki-kim.html), [Lu Feng](https://www.cs.virginia.edu/~lufeng/), [Vicente Ordonez](http://vicenteordonez.com/), [Laura Barnes](https://faculty.virginia.edu/S2HeLab/index.php)
+
+
+![ICCV Poster](https://github.com/soniabaee/MEDIRL-EyeCar/blob/master/iccv21_poster_7007_medirl.png)
+
+
 **This repo is under construction and we will add the clean and most up to dated code shortly. Stay tuned!**
-
-![ICCV Poster](https://github.com/soniabaee/MEDIRL-EyeCar/blob/master/iccv21_poster_7007_medirl.pdf)
-
-
 ## To - Do
 - [ ] Revise the code and add the missed functions
 - [ ] Add the final dataset
 - [ ] Change the format of the data to the .json file (EyeCar)
 - [ ] Add the trained models
 
-# [MEDIRL: Predicting the Visual Attention of Drivers via Deep Inverse Reinforcement Learning](https://arxiv.org/pdf/1912.07773.pdf)
-[Sonia Baee](http://soniabaee.com), [Erfan Pakdamanian](http://www.cs.virginia.edu/~ep2ca/),  [Inki Kim](http://www.sys.virginia.edu/inki-kim.html), [Lu Feng](https://www.cs.virginia.edu/~lufeng/), [Vicente Ordonez](http://vicenteordonez.com/), [Laura Barnes](https://faculty.virginia.edu/S2HeLab/index.php)
 
-![medirl](https://github.com/soniabaee/eyeCar/blob/master/figures/paper8.png)
+
+<!-- ![medirl](https://github.com/soniabaee/eyeCar/blob/master/figures/paper8.png) -->
 
 
 
 
 ## Overview
-Inspired by human visual attention, we introduce a Maximum Entropy Deep Inverse Reinforcement Learning (MEDIRL) framework for modeling the visual attention allocation of drivers in imminent rear-end collisions. MEDIRL is composed of visual, driving, and attention modules. Given a front-view driving video and corresponding eye fixations from humans, the visual and driving modules extract generic and driving-specific visual features, respectively. Finally, the attention module learns the intrinsic task-sensitive reward functions induced by eye fixation policies recorded from attentive drivers. MEDIRL uses the learned policies to predict visual attention allocation of drivers. We also introduce EyeCar, a new driver visual attention dataset during accident-prone situations. We conduct comprehensive experiments and show that MEDIRL outperforms previous state-of-the-art methods on driving task-related visual attention allocation on the following large-scale driving attention benchmark datasets: DR(eye)VE, BDD-A, and DADA-2000. The code and dataset are provided for reproducibility.
+Inspired by human visual attention, we propose a novel inverse reinforcement learning formulation using Maximum Entropy Deep Inverse Reinforcement Learning (MEDIRL) for predicting the visual attention of drivers in accident-prone situations. MEDIRL predicts fixation locations that lead to maximal rewards by learning a task-sensitive reward function from eye fixation patterns recorded from attentive drivers. Additionally, we introduce EyeCar, a new driver attention dataset in accident-prone situations. We conduct comprehensive experiments to evaluate our proposed model on three common benchmarks: (DR(eye)VE, BDD-A, DADA-2000), and our EyeCar dataset. Results indicate that MEDIRL outperforms existing models for predicting attention and achieves state-of-the-art performance. We present extensive ablation studies to provide more insights into different features of our proposed model. The code and dataset are provided for reproducibility.
 
 ## Dataset - EyeCar 
 We select 21 front-view videos that were captured in various traffic, weather, and day light conditions. Each video is 30sec in length and contains typical driving tasks (e.g., lane-keeping, merging-in, and braking) ending to rear-end collisions. Note that all the conditions were counterbalanced among all the participants. Moreover, EyeCar provides information about the speed and GPS of the ego-vehicle. In addition, each video frame comprises 4.6 vehicles on average, making EyeCar driving scenes more complex than other visual attention datasets. The [EyeCar dataset](https://github.com/soniabaee/eyeCar/tree/master/EyeCar) contains 3.5h of gaze behavior (aggregated and raw) from the 20 participants, as well as more than 315,000 rear-end collisions video frames. In EyeCar dataset, we account for the sequence of eye fixations, and thus we emphasize on attention shift to the salient regions in a complex driving scene. EyeCar also provides a rich set of annotations (e.g., scene tagging, object bounding, lane marking, etc.). You can accesss to the data in this [EyeCar](https://github.com/soniabaee/eyeCar/tree/master/EyeCar). Compared  to  prior  datasets,  EyeCar  is  the  only dataset  captured  from  a  point-of-view (POV)  perspective, involving collisions, and including metadata for both speedand  GPS.  EyeCar  also  has  the  largest  average  number  of vehicles per scene, and gaze data for 20 participants. 
 
 ![EyeCar-Dataset](https://github.com/soniabaee/eyeCar/blob/master/figures/eyeCar.png)
 
-## Modules of MEDIRL
+<!-- ## Modules of MEDIRL
 ![medirl-visual-module](https://github.com/soniabaee/eyeCar/blob/master/figures/visual.png)
 1. **The visual module**: The visual module extracts low and mid-level visual cues that are useful for a variety of visual attention tasks. We rely on pre-existing models for semantic and instance segmentation, as well as depth estimation. In addition, we propose an approach to detect brake lights and traffic lights. 
 
@@ -40,7 +41,7 @@ We select 21 front-view videos that were captured in various traffic, weather, a
 
 
 ## Some Results:
-![medirl-result](https://github.com/soniabaee/eyeCar/blob/master/figures/results.png)
+![medirl-result](https://github.com/soniabaee/eyeCar/blob/master/figures/results.png) -->
 
 ## Requirements
 
@@ -93,12 +94,14 @@ You can accesss to the data in this [EyeCar](https://github.com/soniabaee/eyeCar
 ## Citing
 If you find this paper/code useful, please consider citing our paper:
 ```bash
-  @inproceedings{baee2019eyecar,
-    title={EyeCar: Modeling the Visual Attention Allocation of Drivers in Semi-Autonomous Vehicles},
-    author={Baee, Sonia and Pakdamanian, Erfan and Roman, Vicente Ordonez and Kim, Inki and Feng, Lu and Barnes, Laura},
-    booktitle={arXiv preprint arXiv:1912.07773},
-    year={2019}
-  }
+  @InProceedings{Baee_2021_ICCV,
+    author    = {Baee, Sonia and Pakdamanian, Erfan and Kim, Inki and Feng, Lu and Ordonez, Vicente and Barnes, Laura},
+    title     = {MEDIRL: Predicting the Visual Attention of Drivers via Maximum Entropy Deep Inverse Reinforcement Learning},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2021},
+    pages     = {13178-13188}
+}
 ```
 
 
